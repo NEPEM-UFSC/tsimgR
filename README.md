@@ -4,7 +4,7 @@
 
 [![Lifecycle:
 experimental](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![NEPEMVERSE](https://img.shields.io/endpoint?url=https://nepemufsc.com/.netlify/functions/verser?project=tsimgR-stamp&label=LatestVersion:&labelColor=1278ce&logo=nepemverse&logoColor=white&style=plastic&color=#9e2626&cacheSeconds=3600)
+![NEPEMVERSE](https://img.shields.io/endpoint?url=https://nepemufsc.com/.netlify/functions/verser?project=tsimgR-stamp&label=LatestVersion:&labelColor=1278ce&logo=nepemverse&logoColor=white&style=metallic&color=#9e2621&cacheSeconds=3600)
 <!-- badges: end -->
 
 ## tsimgR: R Package for Dynamic and Interactive Export of Series Images
