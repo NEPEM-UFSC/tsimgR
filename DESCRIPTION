@@ -1,10 +1,11 @@
 Package: tsimgR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Dynamic and Interactive Export of Series Images
+Version: 0.0.12
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Matheus", "Machado", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: tsimgR is an R package that facilitates the dynamic and interactive export of series images, allowing clear and accurate visualization of temporal and evolutionary data, by implementing _tsimg_
+seamlessly into R.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
