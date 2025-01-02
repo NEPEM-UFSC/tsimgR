@@ -26,6 +26,8 @@ jobs:
       - name: Install system dependencies on Ubuntu
         if: runner.os == 'Linux'
         run: sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+      - name: Install curl
+        run: install.packages("curl")
       - name: Install Rcpp
         run: install.packages("Rcpp")
         shell: Rscript {0}
