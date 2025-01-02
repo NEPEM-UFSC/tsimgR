@@ -8,17 +8,6 @@
 #' @param width Optional. The width of the output image in pixels if `plot_df` is provided. Default is 800.
 #' @param height Optional. The height of the output image in pixels if `plot_df` is provided. Default is 600.
 #' @return A raw vector representing the GIF data.
-#' @examples
-#' # Create a GIF from a sequence of image files
-#' createGif(c("image1.png", "image2.png"))
-#'
-#' # Create a GIF from a dataframe of plots
-#' library(ggplot2)
-#' plot_df <- data.frame(plot = I(list(
-#'   ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point(),
-#'   ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point()
-#' )))
-#' createGif(plot_df = plot_df)
 #' @export
 createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL, width = 800, height = 600) {
   if (is.null(image_paths) && is.null(plot_df)) {
@@ -45,8 +34,6 @@ createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL, width =
 #' @param gif_data A raw vector representing the GIF data.
 #' @param file_path The file path where the GIF should be saved with its name
 #' @return NULL
-#' @examples
-#' # saveGif(gif_data, "output.gif")
 #' @export
 saveGif <- function(gif_data, file_path) {
   writeBin(gif_data, file_path)
@@ -64,11 +51,6 @@ saveGif <- function(gif_data, file_path) {
 #'   \item{src}{A character string representing the path to the temporary GIF file.}
 #'   \item{contentType}{A character string representing the content type, which is "image/gif".}
 #' }
-#' @examples
-#' # Example usage:
-#' # Assuming `gif_binary_data` is a raw vector containing GIF data
-#' # result <- displayGif(gif_binary_data)
-#' # print(result$src)
 #' @export
 displayGif <- function(gif_data) {
   temp_filepath <- tempfile(fileext = ".gif")
