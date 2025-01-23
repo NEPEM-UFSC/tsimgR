@@ -1,5 +1,3 @@
-CXX_STD = CXX11
-
 PKG_CPPFLAGS = -I"../inst/include" \
                -DR_NO_REMAP \
                -DSTRICT_R_HEADERS \
