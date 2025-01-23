@@ -20,6 +20,7 @@
 .Rproj.user
 
 /Example
+usage.r
 
 # produced vignettes
 vignettes/*.html
