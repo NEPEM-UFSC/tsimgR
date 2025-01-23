@@ -4,13 +4,16 @@ Version: 0.0.12
 Authors@R: 
     person("Matheus", "Machado", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: tsimgR is an R package that facilitates the dynamic and interactive export of series images, allowing clear and accurate visualization of temporal and evolutionary data, by implementing tsimg seamlessly into R.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: A comprehensive R package for dynamic and interactive export of image 
+    series. It provides tools for creating GIF animations from time series data 
+    and image sequences, enabling clear and accurate visualization of temporal 
+    and evolutionary data through seamless integration of image processing capabilities.
+License: Apache-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 LinkingTo: 
     Rcpp
 Imports: 
-    Rcpp
+    Rcpp (>= 1.0.0)
+Depends: R (>= 3.5.0)
