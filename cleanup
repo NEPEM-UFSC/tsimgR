@@ -1,0 +1,11 @@
+
+#!/bin/sh
+
+# Limpar arquivos temporários e dependências
+rm -rf inst/include/stb/*
+rm -rf inst/include/gif/*
+rm -rf src/*.o
+rm -rf src/*.so
+rm -rf src/*.dll
+
+exit 0

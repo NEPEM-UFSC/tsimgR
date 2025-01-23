@@ -1,14 +1,11 @@
 CXX_STD = CXX11
 
 PKG_CPPFLAGS = -I"../inst/include" \
-               -DSTBI_NO_HDR \
                -DR_NO_REMAP \
                -DSTRICT_R_HEADERS \
-               -DSTBI_IMPLEMENTATION \
-               -DSTB_IMAGE_IMPLEMENTATION \
-               -DSTB_IMAGE_WRITE_IMPLEMENTATION \
-               -DSTB_IMAGE_RESIZE_IMPLEMENTATION \
                -DSTBIR_INCLUDE_STB_IMAGE_RESIZE_2_H \
+               -DNOMINMAX \
+               -D_CRT_SECURE_NO_WARNINGS \
                -DRCPP_NO_SUGAR \
                -DBOOST_NO_AUTO_PTR
 
@@ -19,7 +16,9 @@ all: $(SHLIB)
 $(SHLIB): dependencies
 
 dependencies:
-	"${R_HOME}/bin/Rscript" ../tools/fetch_dependencies.R
+	@if [ ! -f "../inst/include/stb/stb_image.h" ]; then \
+		"${R_HOME}/bin${R_ARCH_BIN}/Rscript" ../tools/fetch_dependencies.R; \
+	fi
 
 clean:
 	rm -f *.o *.so *.dll

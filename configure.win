@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Criar diretórios necessários
+mkdir -p inst/include/stb
+mkdir -p inst/include/gif
+
+# Verificar se já tem os arquivos antes de baixar
+if [ ! -f "inst/include/stb/stb_image.h" ]; then
+    "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" tools/fetch_dependencies.R
+fi
+
+# Verificar se as dependências estão presentes
+for file in inst/include/stb/stb_image.h inst/include/stb/stb_image_write.h inst/include/stb/stb_image_resize2.h inst/include/gif/gif.h; do 
+    if [ ! -f "$file" ]; then
+        echo "Erro: Arquivo $file nao encontrado"
+        exit 1
+    fi
+done
+
+exit 0
