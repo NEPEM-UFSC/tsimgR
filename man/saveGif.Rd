@@ -18,6 +18,16 @@ Invisible NULL
 Save GIF data to file
 }
 \examples{
-# gif_data <- createGif("image.png")
-# saveGif(gif_data, "output.gif")
+# Criar um GIF de exemplo com plots
+data(volcano)
+plots <- lapply(c(30, 60, 90), function(angle) {
+  persp(volcano, theta = angle, phi = 30,
+        col = "lightblue", shade = 0.5)
+})
+gif_data <- createGif(plot_df = data.frame(plot = I(plots)))
+
+\dontrun{
+  # Salvar o GIF em arquivo
+  saveGif(gif_data, "volcano_rotation.gif")
+}
 }

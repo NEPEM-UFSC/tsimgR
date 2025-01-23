@@ -20,11 +20,19 @@ Invisible list with file path and content type
 Display a GIF using system default viewer
 }
 \examples{
-# Basic usage with variable assignment (recommended)
-gif_data <- createGif(c("image1.png", "image2.png"))
-result <- displayGif(gif_data)
+data(volcano)
+plots <- lapply(c(0, 45, 90, 135), function(angle) {
+  persp(volcano, theta = angle, phi = 30,
+        col = "lightblue", shade = 0.5)
+})
+gif_data <- createGif(plot_df = data.frame(plot = I(plots)))
 
-# From file
-saveGif(gif_data, "my_animation.gif")
-result <- displayGif("my_animation.gif")
+\dontrun{
+  displayGif(gif_data)
+  
+  displayGif(gif_data, viewer = "browser")
+  
+  saveGif(gif_data, "volcano.gif")
+  displayGif("volcano.gif")
+}
 }

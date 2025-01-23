@@ -8,6 +8,28 @@
 #' @param frame_delay Optional. Delay between frames in milliseconds. Default: 100
 #' @param reverse Logical. If TRUE, reverses the sequence. Default: FALSE
 #' @return A raw vector representing the GIF data
+#' @examples
+#' data(volcano)
+#' plots <- lapply(c(30, 60, 90), function(angle) {
+#'   persp(volcano, 
+#'         theta = angle,
+#'         phi = 30,
+#'         col = "lightblue",
+#'         shade = 0.5,
+#'         main = paste("Rotação:", angle, "graus"))
+#' })
+#'
+#' gif_data <- createGif(
+#'   plot_df = data.frame(plot = I(plots)),
+#'   width = 480,
+#'   height = 480,
+#'   frame_delay = 150
+#' )
+#' 
+#' 
+#' \dontrun{
+#'   displayGif(gif_data)
+#' }
 #' @export
 createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL, 
                      width = 800, height = 600, frame_delay = 100, reverse = FALSE) {
@@ -35,6 +57,19 @@ createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL,
 #' @param gif_data Raw vector of GIF data
 #' @param file_path Output file path
 #' @return Invisible NULL
+#' @examples
+#' # Criar um GIF de exemplo com plots
+#' data(volcano)
+#' plots <- lapply(c(30, 60, 90), function(angle) {
+#'   persp(volcano, theta = angle, phi = 30,
+#'         col = "lightblue", shade = 0.5)
+#' })
+#' gif_data <- createGif(plot_df = data.frame(plot = I(plots)))
+#' 
+#' \dontrun{
+#'   # Salvar o GIF em arquivo
+#'   saveGif(gif_data, "volcano_rotation.gif")
+#' }
 #' @export
 saveGif <- function(gif_data, file_path) {
     writeBin(gif_data, file_path)
@@ -47,6 +82,22 @@ saveGif <- function(gif_data, file_path) {
 #' @param viewer Character. Display method: "default", "browser", "tempfile". Default: "default"
 #' @param cleanup Logical. Remove temporary file after viewing. Default: TRUE
 #' @return Invisible list with file path and content type
+#' @examples
+#' data(volcano)
+#' plots <- lapply(c(0, 45, 90, 135), function(angle) {
+#'   persp(volcano, theta = angle, phi = 30,
+#'         col = "lightblue", shade = 0.5)
+#' })
+#' gif_data <- createGif(plot_df = data.frame(plot = I(plots)))
+#' 
+#' \dontrun{
+#'   displayGif(gif_data)
+#'   
+#'   displayGif(gif_data, viewer = "browser")
+#'   
+#'   saveGif(gif_data, "volcano.gif")
+#'   displayGif("volcano.gif")
+#' }
 #' @export
 displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
     view_gif_file <- function(filepath, viewer_type = viewer) {

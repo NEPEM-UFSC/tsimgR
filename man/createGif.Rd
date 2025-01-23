@@ -36,9 +36,25 @@ A raw vector representing the GIF data
 Create a GIF from a sequence of images or plots
 }
 \examples{
-# Basic usage
-createGif(c("image1.png", "image2.png"))
+data(volcano)
+plots <- lapply(c(30, 60, 90), function(angle) {
+  persp(volcano, 
+        theta = angle,
+        phi = 30,
+        col = "lightblue",
+        shade = 0.5,
+        main = paste("Rotação:", angle, "graus"))
+})
 
-# With custom frame delay and reverse
-createGif(c("image1.png", "image2.png"), frame_delay = 200, reverse = TRUE)
+gif_data <- createGif(
+  plot_df = data.frame(plot = I(plots)),
+  width = 480,
+  height = 480,
+  frame_delay = 150
+)
+
+
+\dontrun{
+  displayGif(gif_data)
+}
 }
