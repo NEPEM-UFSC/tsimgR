@@ -1,5 +1,7 @@
 useDynLib(tsimgR, .registration = TRUE)
 importFrom(Rcpp, evalCpp)
+importFrom(grDevices, dev.off)
+importFrom(grDevices, jpeg)
 export(createGif)
 export(saveGif)
 export(displayGif)

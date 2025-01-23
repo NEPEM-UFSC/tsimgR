@@ -8,7 +8,7 @@ Description: A comprehensive R package for dynamic and interactive export of ima
     series. It provides tools for creating GIF animations from time series data 
     and image sequences, enabling clear and accurate visualization of temporal 
     and evolutionary data through seamless integration of image processing capabilities.
-License: Apache-2.0
+License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
@@ -17,4 +17,3 @@ LinkingTo:
 Imports: 
     Rcpp (>= 1.0.0)
 Depends: R (>= 3.5.0)
-Examples: FALSE
