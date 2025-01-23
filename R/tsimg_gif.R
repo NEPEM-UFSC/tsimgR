@@ -8,12 +8,6 @@
 #' @param frame_delay Optional. Delay between frames in milliseconds. Default: 100
 #' @param reverse Logical. If TRUE, reverses the sequence. Default: FALSE
 #' @return A raw vector representing the GIF data
-#' @examples
-#' # Basic usage
-#' createGif(c("image1.png", "image2.png"))
-#'
-#' # With custom frame delay and reverse
-#' createGif(c("image1.png", "image2.png"), frame_delay = 200, reverse = TRUE)
 #' @export
 createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL, 
                      width = 800, height = 600, frame_delay = 100, reverse = FALSE) {
@@ -41,9 +35,6 @@ createGif <- function(image_paths = NULL, debug = FALSE, plot_df = NULL,
 #' @param gif_data Raw vector of GIF data
 #' @param file_path Output file path
 #' @return Invisible NULL
-#' @examples
-#' # gif_data <- createGif("image.png")
-#' # saveGif(gif_data, "output.gif")
 #' @export
 saveGif <- function(gif_data, file_path) {
     writeBin(gif_data, file_path)
@@ -56,23 +47,13 @@ saveGif <- function(gif_data, file_path) {
 #' @param viewer Character. Display method: "default", "browser", "tempfile". Default: "default"
 #' @param cleanup Logical. Remove temporary file after viewing. Default: TRUE
 #' @return Invisible list with file path and content type
-#' @examples
-#' # Basic usage with variable assignment (recommended)
-#' gif_data <- createGif(c("image1.png", "image2.png"))
-#' result <- displayGif(gif_data)
-#'
-#' # From file
-#' saveGif(gif_data, "my_animation.gif")
-#' result <- displayGif("my_animation.gif")
 #' @export
 displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
     view_gif_file <- function(filepath, viewer_type = viewer) {
         result <- tryCatch({
             switch(viewer_type,
                 "browser" = {
-                    # Removido parâmetro wait que causava erro
                     utils::browseURL(filepath)
-                    # Dar tempo para o navegador abrir
                     Sys.sleep(1)
                 },
                 "tempfile" = {
@@ -109,7 +90,7 @@ displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
             )
             filepath
         }, error = function(e) {
-            warning("Error displaying GIF: ", e$message, "\nFalling back to browser")
+            warning("Error displaying GIF: ", e$message, "/nFalling back to browser")
             utils::browseURL(filepath)
             Sys.sleep(1)
             filepath
@@ -118,7 +99,6 @@ displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
         return(result)
     }
     
-    # Process input and create/verify file path
     if (is.raw(gif_data)) {
         temp_dir <- tempdir()
         if (!dir.exists(temp_dir)) {
@@ -138,7 +118,7 @@ displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
             stop("File does not exist: ", gif_data)
         }
         
-        if (!grepl("\\.gif$", tolower(gif_data), ignore.case = TRUE)) {
+        if (!grepl("//.gif$", tolower(gif_data), ignore.case = TRUE)) {
             stop("File does not appear to be a GIF: ", gif_data)
         }
         
@@ -169,7 +149,6 @@ displayGif <- function(gif_data, viewer = "default", cleanup = TRUE) {
         }
     )
     
-    # Register cleanup if requested
     if (cleanup && !is.null(temp_filepath)) {
         reg.finalizer(environment(), function(e) {
             if (file.exists(temp_filepath)) {
