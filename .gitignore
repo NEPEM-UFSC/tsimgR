@@ -65,3 +65,4 @@ src/*.so
 src/*.dll
 inst/include/
 src/*.cpp.dump
+src/*.cpp.ctu-info
