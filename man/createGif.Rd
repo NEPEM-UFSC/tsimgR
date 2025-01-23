@@ -9,35 +9,36 @@ createGif(
   debug = FALSE,
   plot_df = NULL,
   width = 800,
-  height = 600
+  height = 600,
+  frame_delay = 100,
+  reverse = FALSE
 )
 }
 \arguments{
-\item{image_paths}{Optional. A character vector containing the file paths of the images to include in the GIF. If not provided, `plot_df` must be supplied.}
+\item{image_paths}{Optional. Character vector of image file paths}
 
-\item{debug}{Logical. If TRUE, prints debug information during the GIF creation process. Default is FALSE.}
+\item{debug}{Logical. If TRUE, prints debug information}
 
-\item{plot_df}{Optional. A dataframe containing plot objects to be included in the GIF. Each row should contain a plot object. If not provided, `image_paths` must be supplied.}
+\item{plot_df}{Optional. Dataframe containing plot objects}
 
-\item{width}{Optional. The width of the output image in pixels if `plot_df` is provided. Default is 800.}
+\item{width}{Optional. Width in pixels for plot_df images. Default: 800}
 
-\item{height}{Optional. The height of the output image in pixels if `plot_df` is provided. Default is 600.}
+\item{height}{Optional. Height in pixels for plot_df images. Default: 600}
+
+\item{frame_delay}{Optional. Delay between frames in milliseconds. Default: 100}
+
+\item{reverse}{Logical. If TRUE, reverses the sequence. Default: FALSE}
 }
 \value{
-A raw vector representing the GIF data.
+A raw vector representing the GIF data
 }
 \description{
-This function generates a GIF from a sequence of image files or plot objects.
+Create a GIF from a sequence of images or plots
 }
 \examples{
-# Create a GIF from a sequence of image files
+# Basic usage
 createGif(c("image1.png", "image2.png"))
 
-# Create a GIF from a dataframe of plots
-library(ggplot2)
-plot_df <- data.frame(plot = I(list(
-  ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point(),
-  ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point()
-)))
-createGif(plot_df = plot_df)
+# With custom frame delay and reverse
+createGif(c("image1.png", "image2.png"), frame_delay = 200, reverse = TRUE)
 }

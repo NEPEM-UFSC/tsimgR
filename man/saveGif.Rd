@@ -2,18 +2,22 @@
 % Please edit documentation in R/tsimg_gif.R
 \name{saveGif}
 \alias{saveGif}
-\title{Save the raw vector into a proper .gif file}
+\title{Save GIF data to file}
 \usage{
 saveGif(gif_data, file_path)
 }
 \arguments{
-\item{gif_data}{A raw vector representing the GIF data.}
+\item{gif_data}{Raw vector of GIF data}
 
-\item{file_path}{The file path where the GIF should be saved with its name}
+\item{file_path}{Output file path}
+}
+\value{
+Invisible NULL
 }
 \description{
-Save the raw vector into a proper .gif file
+Save GIF data to file
 }
 \examples{
+# gif_data <- createGif("image.png")
 # saveGif(gif_data, "output.gif")
 }

@@ -2,27 +2,29 @@
 % Please edit documentation in R/tsimg_gif.R
 \name{displayGif}
 \alias{displayGif}
-\title{Display a GIF}
+\title{Display a GIF using system default viewer}
 \usage{
-displayGif(gif_data)
+displayGif(gif_data, viewer = "default", cleanup = TRUE)
 }
 \arguments{
-\item{gif_data}{A raw vector representing the GIF data. This should be the binary content of a GIF image.}
+\item{gif_data}{Raw vector of GIF data or path to a GIF file}
+
+\item{viewer}{Character. Display method: "default", "browser", "tempfile". Default: "default"}
+
+\item{cleanup}{Logical. Remove temporary file after viewing. Default: TRUE}
 }
 \value{
-A list containing:
-\describe{
-  \item{src}{A character string representing the path to the temporary GIF file.}
-  \item{contentType}{A character string representing the content type, which is "image/gif".}
-}
+Invisible list with file path and content type
 }
 \description{
-This function takes a raw vector representing GIF data, writes it to a temporary file,
-and returns a list containing the path to the temporary GIF file and the content type.
+Display a GIF using system default viewer
 }
 \examples{
-# Example usage:
-# Assuming `gif_binary_data` is a raw vector containing GIF data
-# result <- displayGif(gif_binary_data)
-# print(result$src)
+# Basic usage with variable assignment (recommended)
+gif_data <- createGif(c("image1.png", "image2.png"))
+result <- displayGif(gif_data)
+
+# From file
+saveGif(gif_data, "my_animation.gif")
+result <- displayGif("my_animation.gif")
 }
