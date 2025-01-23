@@ -10,21 +10,21 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// createGifRcpp
-RawVector createGifRcpp(const std::vector<std::string>& image_paths, bool debug);
-RcppExport SEXP _tsimgR_createGifRcpp(SEXP image_pathsSEXP, SEXP debugSEXP) {
+// tsimg_gif_rcpp
+RawVector tsimg_gif_rcpp(const std::vector<std::string>& image_paths, bool debug);
+RcppExport SEXP _tsimgR_tsimg_gif_rcpp(SEXP image_pathsSEXP, SEXP debugSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const std::vector<std::string>& >::type image_paths(image_pathsSEXP);
     Rcpp::traits::input_parameter< bool >::type debug(debugSEXP);
-    rcpp_result_gen = Rcpp::wrap(createGifRcpp(image_paths, debug));
+    rcpp_result_gen = Rcpp::wrap(tsimg_gif_rcpp(image_paths, debug));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_tsimgR_createGifRcpp", (DL_FUNC) &_tsimgR_createGifRcpp, 2},
+    {"_tsimgR_tsimg_gif_rcpp", (DL_FUNC) &_tsimgR_tsimg_gif_rcpp, 2},
     {NULL, NULL, 0}
 };
 
